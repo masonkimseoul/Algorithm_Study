@@ -1,12 +1,10 @@
-def solution(brown, yellow):
-    answer = []
-    S = brown + yellow
-    for i in range(1,max(brown,yellow)):
-        a = i
-        b = S / a
-        if((a-2) * (b-2) == yellow):
+N = int(input())
+i = 666
+cnt = 0
+while(True):
+    if(str(i).find("666") >= 0):
+        cnt = cnt + 1
+        if(cnt == N):
             break
-    if(a <= b):
-        answer.append(b)
-    answer.append(a)
-    return answer
+    i = i + 1
+print(i)
