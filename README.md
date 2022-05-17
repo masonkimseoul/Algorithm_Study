@@ -4,12 +4,12 @@ This is for algorithm study.
 
 ## 규칙
 
-File_name = [플랫폼 명]_[문제 ID}.py
+File_name = [플랫폼 명]_[문제 ID].py  
+(ex. BOJ_1242.py)  
 
-(ex. BOJ_1242.py)
-백준 - BOJ
-프로그래머스 - PGS
-리트코드 - LTC
+백준 - BOJ  
+프로그래머스 - PGS  
+리트코드 - LTC  
 
 
 ## 일정
