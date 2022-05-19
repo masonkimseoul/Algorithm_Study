@@ -25,7 +25,16 @@ void InputArr() {
 
 void PrintResult() {
 	for (iter = resultset.begin(); iter != resultset.end(); iter++) {
-		cout << *iter << endl; // 최소 한 개의 모음 + 최소 2개의 자음
+		int cnt = 0;
+
+		string temp = *iter;
+		for (int i = 0; i < temp.size(); i++) {
+			if (temp[i] == 'a' || temp[i] == 'i' || temp[i] == 'o' || temp[i] == 'u')
+				cnt++;
+		}
+
+		if (cnt >= 1 && 2 <= L - cnt)
+			cout << temp << endl;
 	}
 }
 
