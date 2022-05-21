@@ -29,7 +29,7 @@ void PrintResult() {
 
 		string temp = *iter;
 		for (int i = 0; i < temp.size(); i++) {
-			if (temp[i] == 'a' || temp[i] == 'i' || temp[i] == 'o' || temp[i] == 'u')
+			if (temp[i] == 'a' || temp[i] == 'e' || temp[i] == 'i' || temp[i] == 'o' || temp[i] == 'u')
 				cnt++;
 		}
 
