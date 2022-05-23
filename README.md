@@ -16,6 +16,6 @@ File_name = [플랫폼 명]_[문제 ID].py
 
 <b>스프린트</b> |<b>기간</b> |<b>링크</b>
 :-|:-|:-
-Sprint00 | 22.05.12 - 22.05.29 | [링크](https://github.com/SunghunKim98/Algorithm_Study/wiki)
-Sprint01 | 22.05.30 - 22.06.12 | [링크](www.naver.com)
-Sprint02 | 22.06.13 - 22.06.30 | [링크](www.naver.com)
+Sprint00 | 22.05.12 - 22.05.22 | [링크](https://github.com/SunghunKim98/Algorithm_Study/wiki/Sprint00)
+Sprint01 | 22.05.23 - 22.06.05 | [링크](https://github.com/SunghunKim98/Algorithm_Study/wiki/Sprint01)
+Sprint02 | 22.06.06 - 22.06.19 | [링크](https://github.com/SunghunKim98/Algorithm_Study/wiki/Sprint02)
