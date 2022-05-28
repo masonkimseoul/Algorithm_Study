@@ -41,5 +41,33 @@ def solution(numbers, target):
     return answer
 
 
+'''
+    세 번째 방법 (BFS) with deque
+'''
 
+from collections import deque
+
+def solution(numbers, target):
+    answer = 0
+    queue = deque()
+    
+    queue.append([0, 0])
+    
+    while queue:
+        total, idx = queue.popleft()
+        
+        if idx == len(numbers):
+            if total == target:
+                answer += 1
+        
+        else:
+            queue.append([total + numbers[idx], (idx + 1)])
+            queue.append([total - numbers[idx], (idx + 1)])        
+
+    return answer
+
+
+'''
+    네 번째 방법 (DFS) with global variable
+'''
 
