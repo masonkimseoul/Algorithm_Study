@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\sprint02",
+    "\\sprint02\\JMS",
+    "\\sprint02\\KMS"
   ],
+  "SelectedNode": "\\sprint02\\KMS\\BOJ_2606.c",
   "PreviewInSolutionExplorer": false
 }
