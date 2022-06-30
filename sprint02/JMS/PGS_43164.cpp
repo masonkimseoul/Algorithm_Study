@@ -9,29 +9,31 @@ using namespace std;
 vector<string> answer;
 int visited[10001] = {0};
 
-void DFS(int index, vector<vector<string>> tickets){
-    answer.push_back(tickets[index][1]);
+bool DFS(string dest, vector<vector<string>> tickets){
+    answer.push_back(dest);
     
     for(int i=0;i<tickets.size();i++){
-        if(!visited[i] && !tickets[i][0].compare(tickets[index][1])){
-            visited[index] = 1;
-            visited[i] = 1;
-            DFS(i, tickets);
+        if(!visited[i] && !tickets[i][0].compare(dest)){
+            visited[i]  = 1;
+            if(DFS(tickets[i][1], tickets))
+                return true;
+            else
+                visited[i] = 0;
         }
+    }
+    
+    if(answer.size() - 1 == tickets.size())
+        return true;
+    else{
+        answer.pop_back();
+        return false;
     }
 }
 
 vector<string> solution(vector<vector<string>> tickets) {
     sort(tickets.begin(), tickets.end());
     
-    for(int i=0;i<tickets.size();i++){
-        if(!tickets[i][0].compare("ICN")){
-            answer.push_back("ICN");
-            DFS(i, tickets);
-            break;
-        }
-    }
-    
+    DFS("ICN", tickets);
     
     return answer;
 }
