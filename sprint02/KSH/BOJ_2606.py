@@ -16,6 +16,15 @@ def bfs(lst):
     return (len(visited) - 1)
 
 
+def dfs(idx, lst, visited):
+    global cnt
+
+    for i in lst[idx]:
+        if i not in visited:
+            visited.append(i)
+            dfs(i, lst, visited)
+            cnt += 1
+
 if __name__ == "__main__":
     n = int(input())
     m = int(input())
@@ -26,5 +35,12 @@ if __name__ == "__main__":
         a, b = map(int, input().split())
         lst[a].append(b)
         lst[b].append(a)
-    
-    print(bfs(lst))
+
+    # global cnt
+    cnt = 0
+
+    visited = []
+    dfs(1, lst, visited)
+
+    print(cnt - 1)
+
