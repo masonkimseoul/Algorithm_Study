@@ -12,10 +12,10 @@ def dfs(v):
 
 
 def solution(tickets):
-    for s, e in tickets:
-        graph[s].append(e)
-    for s, e in graph.items():
-        graph[s].sort()
+    for departure, arrival in tickets:
+        graph[departure].append(arrival)
+    for departure, arrival in graph.items():
+        graph[departure].sort()
 
     dfs("ICN")
 
