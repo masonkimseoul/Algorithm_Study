@@ -32,6 +32,7 @@ def bfs(a, b, value, visited):
  
  
 result = 0
+print(maxNum)
 for i in range(maxNum): 
     visited = [[0] * n for i in range(n)]
     cnt = 0
