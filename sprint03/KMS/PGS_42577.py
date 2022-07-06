@@ -1,17 +1,14 @@
 def solution(phone_book):
     answer = True
     
-    phone_dict = {}
-    for key in phone_book:
-        phone_dict[key] = 1
+    # 정렬
+    phone_book.sort()
     
-    for phone_num in phone_dict:
-        tmp = ''
-        for num in phone_num:
-            tmp += num
-            if tmp in phone_dict and tmp != phone_num:
-                answer = False
-                return answer
+    for i in range(len(phone_book)-1):
+            # 접두사 비교 반복문
+                if phone_book[i] == phone_book[i+1][0:len(phone_book[i])]:
+                    return False
+                
+                
     
     return answer
-
