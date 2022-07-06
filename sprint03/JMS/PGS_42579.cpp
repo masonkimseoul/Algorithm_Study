@@ -12,8 +12,6 @@ unordered_map<string, vector<ii>> albom;
 unordered_map<string, int> genrecount;
 unordered_map<int, int> playid;
 
-
-
 vector<int> solution(vector<string> genres, vector<int> plays) {
     vector<int> answer;
     
