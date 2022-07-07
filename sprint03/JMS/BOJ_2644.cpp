@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int n, m, find1, find2, result;
+int n, m, find1, find2;
 int hier[101] = { 0 };
 vector<int> fam[101];
 
