@@ -12,8 +12,6 @@ for _ in range(m):
     graph[x].append(y)
     graph[y].append(x)
 
-relations = []
-
 
 def dfs(v):
     for p in graph[v]:
