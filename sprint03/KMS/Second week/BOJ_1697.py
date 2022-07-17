@@ -1,3 +1,4 @@
+import sys
 from collections import deque
 n,k = map(int, input().split())
 
@@ -6,35 +7,23 @@ for i in range(100001):
     visit.append(0)
 q = deque()
 
-def bfs(a,k):
-    global n
-    q.append((a,0))
+def bfs(n,k):
+    q.append(n)
+    visit[n] = 1
     while(q):
-        tmp,cnt = q.pop()
-        if tmp > 100001 or 0 > tmp:
+        tmp = q.popleft()
+        if tmp > 100001 or tmp < 0:
             continue
-        # print(tmp)
         if tmp == k:
-            return cnt
-        if visit[tmp * 2] == 0:
-            visit[tmp *2] = cnt
-            q.append((tmp*2,cnt+1))
-        if visit[tmp + 1] == 0:
-            visit[tmp + 1] = cnt
-            q.append((tmp+1,cnt+1))
-        if visit[tmp - 1] == 0:
-            visit[tmp - 1] = cnt
-            q.append((tmp-1,cnt+1))
+            return visit[k]        
+        if tmp *2 <= 100001 and visit[tmp * 2] == 0:
+            visit[tmp *2] = visit[tmp]+1
+            q.append(tmp*2)
+        if tmp +1 < 100001 and visit[tmp + 1] == 0:
+            visit[tmp + 1] = visit[tmp]+1
+            q.append(tmp+1)
+        if tmp -1 >= 0 and visit[tmp - 1] == 0:
+            visit[tmp - 1] = visit[tmp]+1
+            q.append(tmp-1)
+print(bfs(n,k)-1)
         
-print(bfs(n,k))
-        
-
-
-# def dfs(a,k,cnt):
-#     if a == k:
-#         print(a,cnt)
-#         return
-#     dfs(2*a,k,cnt+1)
-#     dfs(a-1,k,cnt+1)
-#     dfs(a+1,k,cnt+1)
-# dfs(n,k,0)
