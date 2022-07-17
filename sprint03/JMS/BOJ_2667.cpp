@@ -11,7 +11,6 @@ int diri[4] = { -1,1,0,0 }, dirj[4] = { 0,0,-1,1 };
 bool visited[25][25] = { false };
 vector<int> housecntV;
 
-
 typedef struct index {
 	int i, j;
 }Index;
