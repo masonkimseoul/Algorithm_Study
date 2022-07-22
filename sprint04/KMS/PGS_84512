@@ -1,0 +1,16 @@
+def solution(word):
+    answer = 0
+    order = {0 : '', 1 : 'A', 2: 'E', 3: 'I', 4: 'O', 5: 'U'}
+    tmp = []
+    cnt = 0
+    while True:
+        if not tmp:
+            tmp.append('A')
+            cnt += 1
+        
+    
+    
+    return answer
+
+
+solution("AAAA")
