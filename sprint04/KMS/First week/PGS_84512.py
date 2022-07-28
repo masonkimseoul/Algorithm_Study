@@ -7,7 +7,4 @@ def solution(word) :
         arr += list(map("".join, product(target, repeat=i)))
 
     arr.sort()
-
-    for i in range(len(arr)) :
-        if arr[i] == word :
-            return i + 1
+    return arr.index(word)+1
