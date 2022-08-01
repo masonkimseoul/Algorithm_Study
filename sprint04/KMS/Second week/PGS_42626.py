@@ -1,4 +1,4 @@
-mport heapq
+import heapq
 
 def solution(scovile, K):
     heapq.heapify(scovile)
