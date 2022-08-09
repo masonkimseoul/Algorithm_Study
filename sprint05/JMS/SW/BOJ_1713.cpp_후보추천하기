@@ -1,0 +1,82 @@
+#include <iostream>
+#include <map>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int N, M;
+int arr[1000];
+map<int, int> candidate, clockM;
+
+void Input() {
+	cin >> N;
+	cin >> M;
+	for (int i = 0; i < M; i++)
+		cin >> arr[i];
+}
+
+bool CompareA(pair<int, int> A, pair<int, int> B) {
+	return A.second < B.second;
+}
+
+bool CompareD(pair<int, int> A, pair<int, int> B) {
+	return A.second > B.second;
+}
+
+void Solution() {
+	for (int i = 0; i < M; i++) {
+		if(candidate.find(arr[i]) == candidate.end() && candidate.size() >= N) {
+			vector<pair<int, int>> v(candidate.begin(), candidate.end());
+			vector<int> minimumV;
+
+			sort(v.begin(), v.end(), CompareA);
+			
+			for (auto p : v) {
+				if (p.second == v[0].second)
+					minimumV.push_back(p.first);
+				else
+					break;
+			}
+
+			int erasekey;
+
+			if (minimumV.size() != 1) {
+				vector<pair<int, int>> cv(clockM.begin(), clockM.end());
+				sort(cv.begin(), cv.end(), CompareD);
+
+				for (auto p : cv) {
+					if (find(minimumV.begin(), minimumV.end(), p.first) != minimumV.end()) {
+						erasekey = p.first;
+						break;
+					}
+				}
+			}
+			else
+				erasekey = minimumV[0];
+
+			auto it = candidate.find(erasekey);
+			candidate.erase(it);
+
+			it = clockM.find(erasekey);
+			clockM.erase(it);
+		}
+
+		candidate[arr[i]]++;
+		for (map<int, int>::iterator it = clockM.begin(); it != clockM.end(); it++)
+			it->second++;
+		clockM[arr[i]]++;
+	}
+}
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	Input();
+	Solution();
+
+	for (auto p : candidate)
+		cout << p.first << " ";
+}
