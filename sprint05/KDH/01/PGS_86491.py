@@ -1,5 +1,4 @@
 def solution(sizes):
-    answer = 0
     max1, max2 = -1, -1
 
     for size in sizes:
