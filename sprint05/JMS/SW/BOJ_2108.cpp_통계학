@@ -1,0 +1,80 @@
+#include <iostream>
+#include <unordered_map>
+#include <vector>
+#include <cmath>
+#include <algorithm>
+
+using namespace std;
+
+int N;
+unordered_map<int, int> m;
+vector<int> v;
+
+bool SecondCompare(pair<int, int> a, pair<int, int> b) {
+	if (a.second == b.second)
+		return a.first < b.first;
+	return a.second > b.second;
+}
+
+void Average() {
+	int sum = 0;
+
+	for (auto p : v)
+		sum += p;
+
+	int result = round((double)sum / N);
+
+	if (result == -0)
+		cout << 0;
+	else
+		cout << result;
+	cout << '\n';
+}
+
+void Median() {
+	cout << v[N / 2] << '\n';
+}
+
+void Mostfrequency() {
+	vector<pair<int, int>> mv(m.begin(), m.end());
+	vector<int> fv;
+	int mostfrequency;
+
+	sort(mv.begin(), mv.end(), SecondCompare);
+	mostfrequency = mv[0].first;
+	if (mv[0].second == mv[1].second)
+		mostfrequency = mv[1].first;
+
+	cout << mostfrequency << '\n';
+}
+
+void Range() {
+	cout << v[N - 1] - v[0] << '\n';
+}
+
+void Solution() {
+	cin >> N;
+
+	for (int i = 0; i < N; i++) {
+		int num;
+
+		cin >> num; 
+		v.push_back(num);
+		m[num]++;
+	}
+
+	sort(v.begin(), v.end());
+
+	Average();
+	Median();
+	Mostfrequency();
+	Range();
+}
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	Solution();
+}
