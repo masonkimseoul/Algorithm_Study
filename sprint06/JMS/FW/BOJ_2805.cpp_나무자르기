@@ -1,0 +1,48 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+int maxh=0, N, M;
+vector<int> v;
+
+void Input() {
+	cin >> N >> M;
+	for (int i = 0; i < N; i++) {
+		int num;
+		cin >> num;
+		v.push_back(num);
+		maxh = max(maxh, num);
+	}
+}
+
+void Solution() {
+	int left = 0, right = maxh, mid;
+
+	while (left+1 <right) {
+		mid = (left + right) / 2;
+
+		long long sum = 0;
+		for (auto p : v) {
+			if (p - mid > 0)
+				sum += p - mid;
+		}
+
+		if (sum >= M)
+			left = mid;
+		else
+			right = mid;
+	}
+
+	cout << left;
+}
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	Input();
+	Solution();
+}
