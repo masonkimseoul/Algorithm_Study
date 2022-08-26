@@ -1,0 +1,43 @@
+#include <iostream>
+#include <queue>
+
+using namespace std;
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int N;
+	int num;
+	priority_queue<int, vector<int>, less<int>> pql;
+	priority_queue<int, vector<int>, greater<int>> pqg;
+
+	cin >> N;
+	cin >> num;
+
+	pql.push(num);
+	cout << pql.top() << '\n';
+
+	for (int i = 1; i < N; i++) {
+		cin >> num;
+		
+		if (num > pql.top())
+			pqg.push(num);
+		else
+			pql.push(num);
+
+		if (pqg.size() > pql.size()) {
+			int temp = pqg.top();
+			pqg.pop();
+			pql.push(temp);
+		}
+		else if (pql.size() > pqg.size() + 1) {
+			int temp = pql.top();
+			pql.pop();
+			pqg.push(temp);
+		}
+
+		cout << pql.top() << '\n';
+	}
+}
