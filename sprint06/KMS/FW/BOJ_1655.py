@@ -1,31 +1,32 @@
 N = int(input())
-L =[]
+mid = 0
+flag = 0
 for i in range(N):
-    t = int(input())
-    flag = 0
-    if len(L) <= 1:
-        L.append(t)
-    else:
-        if L[0] > t:
-            index = 0
-        elif L[-1] < t:
-            index = -1
+    tmp = int(input())
+    if i == 0:
+        print(tmp)
+        mid = tmp
+        continue
+    # 짝수 일 때
+    if i % 2 != 0:
+        #상에 들어감
+        if mid < tmp:
+            flag = 1
+        #mid가 상에 들어감
         else:
-            for i in range(len(L)-1):
-                if L[i] <= t and t <= L[i+1]:
-                    index = i+1
-        if index == -1:
-            L.append(t)
-        else:
-            L.insert(index,t)
-    if len(L) % 2 != 0:
-        a = int(len(L)/2)
-        print(L[a])
-    else:
-        a = int(len(L)/2)
-        b = a-1
-        if L[a] < L[b]:
-            print(L[a])
-        else:
-            print(L[b])
+            mid = tmp
+            flag = 1
+    # 홀수 일 때
+    if i % 2 == 0:
+        
+    print(mid)
     
+    
+    
+# 6
+# 5
+# 4
+# 4
+# 4
+# 3
+# 3
