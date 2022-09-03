@@ -3,7 +3,6 @@ import sys
 N,M = map(int, input().split())
 L = list(map(int, sys.stdin.readline().split()))
 start, end = 0, max(L)
-print(start, end)
 result = 0
 while start <= end:
     take = 0
