@@ -1,0 +1,27 @@
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int N;
+	int arr[1001], dp[1001] = { 0 };
+
+	cin >> N;
+	for (int i = 1;i <= N;i++) {
+		cin >> arr[i];
+		
+		int maxnum = 0;
+
+		for (int j = i - 1; j >= 1; j--)
+			maxnum = max(maxnum, dp[j] + dp[i - j]);
+		maxnum = max(maxnum, arr[i]);
+		dp[i] = maxnum;
+	}
+
+	cout << dp[N];
+}
