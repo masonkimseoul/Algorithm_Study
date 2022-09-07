@@ -1,22 +1,17 @@
 import sys
 input = sys.stdin.readline
-k = int(input())
-L = []
-for i in range(k):        
-    L.append(int(input()))
+N = int(input())
+dp = [[0]* (10) for _ in range(N+1)]
+for i in range(1,10):
+    dp[1][i] = 1
 
-N = max(L)
-dp = [[0] * (4) for _ in range(N+1)]
-dp[1][1] = 1
-dp[2][2] = 1
-dp[3][3] = 1
-dp[3][1] = 1
-dp[3][2] = 1
-if N > 3:
-    for j in range(4,N+1):
-        dp[j][1] = (dp[j-1][2] + dp[j-1][3])%1000000009
-        dp[j][2] = (dp[j-2][1] + dp[j-2][3])%1000000009
-        dp[j][3] = (dp[j-3][1] + dp[j-3][2])%1000000009
-for i in L:
-    print(sum(dp[i])%1000000009)
-
+for i in range(2, N+1):
+    for j in range(0,10):
+        if j == 0:
+            dp[i][j] = dp[i-1][1]%1000000000
+            continue
+        if j == 9:
+            dp[i][j] = dp[i-1][8]%1000000000
+            continue
+        dp[i][j] = (dp[i-1][j-1]+dp[i-1][j+1])%1000000000
+print(sum(dp[N])%1000000000)
