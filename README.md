@@ -24,4 +24,4 @@ Sprint04 | 22.07.18 - 22.07.31 | [링크](https://github.com/SunghunKim98/Algori
 Sprint05 | 22.08.01 - 22.08.14 | [링크](https://github.com/SunghunKim98/Algorithm_Study/wiki/Sprint05)
 Sprint06 | 22.08.15 - 22.08.28 | [링크](https://github.com/SunghunKim98/Algorithm_Study/wiki/Sprint06)
 Sprint07 | 22.09.01 - 22.09.15 | [링크](https://github.com/SunghunKim98/Algorithm_Study/wiki/Sprint07)
-Sprint08 | 22.09.15 - 22.09.22 | [링크](https://github.com/SunghunKim98/Algorithm_Study/wiki/Sprint08)
+Sprint08 | 22.09.15 - 22.09.29 | [링크](https://github.com/SunghunKim98/Algorithm_Study/wiki/Sprint08)
