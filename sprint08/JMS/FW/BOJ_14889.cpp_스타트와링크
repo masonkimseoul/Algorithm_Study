@@ -1,0 +1,62 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+int N;
+int arr[20][20];
+int minnum = 1000 * 20;
+
+void Input() {
+	cin >> N;
+	for (int i = 0;i < N;i++) {
+		for (int j = 0;j < N;j++)
+			cin >> arr[i][j];
+	}
+}
+
+int FindStatus(vector<int> vec) {
+	int sum = 0;
+
+	sort(vec.begin(), vec.end());
+	for (int i = 0;i < vec.size() - 1;i++) {
+		for (int j = i + 1;j < vec.size();j++) {
+			sum += arr[vec[i]][vec[j]];
+			sum += arr[vec[j]][vec[i]];
+		}
+	}
+
+	return sum;
+}
+
+void FindMin(vector<int> A, vector<int> B, int index) {
+	int sizeA = A.size(), sizeB = B.size();
+
+	if (sizeA + sizeB == N) {
+		if (abs(sizeA - sizeB) == 0) {
+			int num1 = FindStatus(A), num2 = FindStatus(B);
+			minnum = min(minnum, abs(num1 - num2));
+		}
+		return;
+	}
+
+	A.push_back(index);
+	FindMin(A, B, index + 1);
+	A.pop_back();
+	B.push_back(index);
+	FindMin(A, B, index + 1);
+}
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	vector<int> A, B;
+
+	Input();
+	FindMin(A, B, 0);
+
+	cout << minnum;
+}
