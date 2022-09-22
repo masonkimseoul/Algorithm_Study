@@ -1,0 +1,84 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <cstring>
+
+using namespace std;
+
+int N, M, maxsum = 0;
+int arr[4][4];
+bool visited[4][4];
+int diri[4] = { -1,1,0,0 };
+int dirj[4] = { 0,0,-1,1 };
+
+
+typedef struct Coordinate {
+	int i, j;
+}Coordinate;
+
+void Input() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	cin >> N >> M;
+	for (int i = 0;i < N;i++) {
+		getchar();
+		for (int j = 0;j < M;j++) {
+			char c;
+			cin >> c;
+			arr[i][j] = c - '0';
+		}
+	}
+}
+
+void Solution(Coordinate index, int total) {
+	if (index.i == N-1 && index.j == M) {
+		maxsum = max(maxsum, total);
+		return;
+	}
+
+	Coordinate nextindex = { index.i, index.j + 1};
+	if (index.i != N - 1 && nextindex.j == M) {
+		nextindex.i++;
+		nextindex.j = 0;
+	}
+
+	if (visited[index.i][index.j])
+		Solution(nextindex, total);
+	else {
+		int tempsum;
+
+		tempsum = arr[index.i][index.j];
+		visited[index.i][index.j] = true;
+		Solution(nextindex, total + tempsum);
+		visited[index.i][index.j] = false;
+
+		for (int i = 1; i < N - index.i;i++) {
+			tempsum = tempsum * 10 + arr[index.i + i][index.j];
+			for (int j = 1; j <= i;j++)
+				visited[index.i + j][index.j] = true;
+			Solution(nextindex, total + tempsum);
+			for (int j = 1; j <= i;j++)
+				visited[index.i + j][index.j] = false;
+		}
+
+		tempsum = arr[index.i][index.j];
+		for (int i = 1; i < M - index.j;i++) {
+			if (visited[index.i][index.j + i])
+				return;
+			tempsum = tempsum * 10 + arr[index.i][index.j + i];
+			for (int j = 1; j <= i;j++)
+				visited[index.i][index.j + j] = true;
+			Solution(nextindex, total + tempsum);
+			for (int j = 1; j <= i;j++)
+				visited[index.i][index.j + j] = false;
+		}
+	}
+}
+
+int main() {
+	Input();
+	Solution({0,0}, 0);
+	cout << maxsum;
+}
