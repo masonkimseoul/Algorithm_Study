@@ -3,27 +3,28 @@ import sys
 from tkinter import N
 input = sys.stdin.readline
 n = int(input())
-L = []
+table = []
+for i in range(n):
+    table.append(list(map(int, input().split())))
 all = [_ for _ in range(1,n+1)]
-team = set(combinations(all,n//2))
-b_team = {}
-b = 0 
-for i in team:
-    a = 0
-    b |= (1<<5) -1
-    for j in i:
-        print(j)
-        a |= (1 << j)
-        b &= ~(1 << j)
-    print(a,b)
-    # for k in all:
-    #     print(k)
-    #     n ^= (1 << k)
-    # print(n)
-        
-
-# link_team = 0
-# start_team = 0
-
-
-# Mini = 100 * n
+team = list(combinations(all,n//2))
+size = len(team)
+min = 999999
+score = 0
+team.sort()
+for i in range(size//2):
+    teama = 0
+    teamb = 0
+    for j in range(len(team[i])-1):
+        for k in range(j+1, len(team[i])):
+            teama += table[team[i][j]-1][team[i][k]-1] + table[team[i][k]-1][team[i][j]-1]
+    for j in range(len(team[size-i-1])-1):
+        for k in range(j+1, len(team[size-i-1])):
+            teamb += table[team[size-i-1][j]-1][team[size-i-1][k]-1] + table[team[size-i-1][k]-1][team[size-i-1][j]-1]        
+    if teama < teamb:
+        score = teamb - teama
+    else:
+        score = teama - teamb
+    if min > score:
+        min = score
+print(min)
