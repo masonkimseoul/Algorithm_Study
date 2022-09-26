@@ -61,7 +61,7 @@ int main() {
 	cout.tie(NULL);
 
 	Input();
-	if (K > 5)
+	if (K >= 5)
 		Solution(0, 5);
 	cout << maxcnt;
 }
