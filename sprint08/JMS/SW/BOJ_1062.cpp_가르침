@@ -1,0 +1,67 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+
+using namespace std;
+
+int N, K, maxcnt = 0;
+vector<string> v;
+map<int, bool> m;
+
+void Input() {
+	m['a' - 'a'] = true;
+	m['t' - 'a'] = true;
+	m['i' - 'a'] = true;
+	m['c' - 'a'] = true;
+	m['n' - 'a'] = true;
+
+	cin >> N >> K;
+	for (int i = 0;i < N;i++) {
+		string str;
+		cin >> str;
+		v.push_back(str);
+	}
+}
+
+void Findcnt() {
+	int cnt = 0;
+	for (int i = 0;i < N;i++) {
+		int f = 0;
+		for (auto p : v[i]) {
+			if (!m[p - 'a']) {
+				f = 1;
+				break;
+			}
+		}
+		if (!f)
+			cnt++;
+	}
+	maxcnt = max(maxcnt, cnt);
+}
+
+void Solution(int index, int cnt) {
+	if (cnt == K) {
+		Findcnt();
+		return;
+	}
+
+	for (int i = index;i < 26;i++) {
+		if (m[i])
+			continue;
+		m[i] = true;
+		Solution(i, cnt + 1);
+		m[i] = false;
+	}
+}
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	Input();
+	if (K > 5)
+		Solution(0, 5);
+	cout << maxcnt;
+}
