@@ -1,6 +1,5 @@
 from itertools import combinations
 import sys
-from tkinter import N
 input = sys.stdin.readline
 n = int(input())
 table = []
