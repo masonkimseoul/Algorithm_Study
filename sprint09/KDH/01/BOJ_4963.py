@@ -9,7 +9,7 @@ def dfs(x, y):
     graph[x][y] = 0
     for i in range(8):
         nx, ny = x + dx[i], y + dy[i]
-        if 0<= nx < h and 0<= ny < w and graph[nx][ny] == 1:
+        if 0<= nx < w and 0<= ny < h and graph[nx][ny] == 1:
             dfs(nx, ny)
 
 # 1 land, 0 ocean
