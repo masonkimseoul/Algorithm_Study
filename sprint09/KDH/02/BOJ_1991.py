@@ -2,8 +2,6 @@ import sys
 input = sys.stdin.readline
 
 N = int(input().rstrip())
-
-
 tree = dict()
 for _ in range(N):
     root, left, right = map(str, input().split())
