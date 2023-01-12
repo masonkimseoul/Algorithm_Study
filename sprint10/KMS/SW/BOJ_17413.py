@@ -24,3 +24,5 @@ while(i < size):
   i+=1
 while stack:
   print(stack.pop(), end='')
+  
+  
