@@ -1,11 +1,13 @@
 import itertools
+
+
 def solution(users, emoticons):
-    answer = [0,0]
+    answer = [0, 0]
     sale = [10, 20, 30, 40]
-    sale_rate = list(itertools.product(sale, repeat = len(emoticons)))
+    sale_rate = list(itertools.product(sale, repeat=len(emoticons)))
     for i in sale_rate:
         plus = 0
-        earn_money = 0 
+        earn_money = 0
         for user in users:
             rate, money = user
             tmp = 0

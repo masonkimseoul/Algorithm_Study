@@ -26,4 +26,4 @@ File*name = [플랫폼 명]*[문제 ID].py
 | Sprint08        | 22.09.15 - 22.09.29 | [링크](https://github.com/SunghunKim98/Algorithm_Study/wiki/Sprint08) |
 | Sprint09        | 22.10.31 - 22.11.23 | [링크](https://github.com/SunghunKim98/Algorithm_Study/wiki/Sprint09) |
 | Sprint10        | 22.11.23 - 23.1.12  | [링크](https://github.com/SunghunKim98/Algorithm_Study/wiki/Sprint10) |
-| Sprint10        | 23.1.13 - 23.1.19   | [링크](https://github.com/SunghunKim98/Algorithm_Study/wiki/Sprint11) |
+| Sprint11        | 23.1.13 - 23.1.19   | [링크](https://github.com/SunghunKim98/Algorithm_Study/wiki/Sprint11) |
