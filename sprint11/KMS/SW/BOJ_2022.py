@@ -13,5 +13,4 @@ while abs(l-r) >= 0.001:
         r = d
     else:
         l = d
-print(l, r, d)
 print(round(d, 3))
