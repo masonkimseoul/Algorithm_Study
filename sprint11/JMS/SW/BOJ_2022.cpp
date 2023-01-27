@@ -30,5 +30,7 @@ int main() {
 		else right = mid;
 	}
 
-	printf("%.3lf", left);
+	cout << fixed;
+	cout.precision(3);
+	cout << left;
 }
