@@ -25,7 +25,7 @@ def paperCut(x,y,n):
         if papers[y][x]==-1:
             minus+=1
         elif papers[y][x]==0:
-            zero=1
+            zero+=1
         else:
             plus+=1
 
