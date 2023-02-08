@@ -39,10 +39,13 @@ def solution(A, B, C):
     elif B == 2:
         return (A * A) % C
     else:
+        k = solution(A, B//2, C)
+        # 짝수일 때
         if B % 2 == 0:
-            return (solution(A, B//2, C) ** 2) % C
+            return (k * k) % C
+        # 홀 수 일때
         else:
-            return (((solution(A, B//2, C) ** 2)) * A) % C
+            return k * (k*A) % C
 
 
 print(solution(A, B, C))
