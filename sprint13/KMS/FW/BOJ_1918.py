@@ -1,6 +1,5 @@
 from collections import deque
 L = list(map(str, input().strip()))
-D = {'+': 0, '-': 0, '*': 1, '/': 1}
 stack = []
 for i in L:
     if 'A' <= i <= 'Z':
