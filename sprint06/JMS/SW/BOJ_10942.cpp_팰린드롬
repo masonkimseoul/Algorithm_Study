@@ -1,0 +1,41 @@
+#include <iostream>
+
+using namespace std;
+
+int N, M;
+int arr[2001];
+bool pal[2001][2001];
+
+void Input() {
+	cin >> N;
+	for (int i = 1; i <= N; i++)
+		cin >> arr[i];
+}
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	Input();
+
+	for (int i = 1; i <= N; i++) {
+		pal[i][i] = true;
+		if (i != N && arr[i] == arr[i + 1])
+			pal[i][i + 1] = true;
+	}
+
+	for (int i = N - 1; i >= 1; i--) {
+		for (int j = i + 2; j <= N; j++) {
+			if (arr[i] == arr[j] && pal[i + 1][j - 1] == true)
+				pal[i][j] = true;
+		}
+	}
+
+	cin >> M;
+	for (int i = 0; i < M; i++) {
+		int S, E;
+		cin >> S >> E;
+		cout << pal[S][E] << '\n';
+	}
+}

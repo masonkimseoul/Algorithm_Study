@@ -1,0 +1,66 @@
+#include <iostream>
+#include <algorithm>
+#include <cmath>
+#include <vector>
+
+using namespace std;
+
+typedef struct coordinate {
+	double x, y;
+}Coordinate;
+
+int N;
+double minsum = 0;
+vector<Coordinate> v;
+
+double Calculate(Coordinate A, Coordinate B) {
+	return abs(sqrt(pow(A.x - B.x, 2) + pow(A.y - B.y, 2)));
+}
+
+void BFS() {
+	vector<Coordinate> sack;
+
+	sack.push_back(v[0]);
+	v.erase(v.begin());
+
+	while (1) {
+		if (sack.size() == N)
+			return;
+
+		double sum = 3000;
+		int index = -1;
+
+		for (int i = 0; i < v.size(); i++) {
+			for (int j = 0; j < sack.size(); j++) {
+				double temp = Calculate(sack[j], v[i]);
+				if (sum > temp) {
+					sum = temp;
+					index = i;
+				}
+			}
+		}
+
+		if (index != -1) {
+			sack.push_back(v[index]);
+			v.erase(next(v.begin(), index));
+			minsum += sum;
+		}
+	}
+}
+
+int main() {
+	cin >> N;
+
+	for (int i = 0; i < N; i++) {
+		double x, y;
+
+		cin >> x >> y;
+		v.push_back({ x,y });
+	}
+
+	BFS();
+
+	cout << fixed;
+	cout.precision(2);
+	cout << minsum;
+}
